@@ -6,9 +6,10 @@ import UserInfo from './UserInfo.jsx';
 const formatDate = date => moment(date).format("DD MMM YYYY");
 
 function Comment(props) {
+  console.log(props);
   return (
     <div className="comment">
-      <UserInfo author={props.user}/>
+      <UserInfo name={props.author} />
       <div className="comment__text">{props.text}</div>
       <div className="comment__date">{formatDate(props.date)}</div>
     </div>
