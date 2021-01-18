@@ -3,7 +3,6 @@ import Avatar from './Avatar.jsx';
 import './userInfo.scss';
 
 const UserInfo = (props) => {
-  console.log(props);
   return (
     <div className="user-info">
         <Avatar 
