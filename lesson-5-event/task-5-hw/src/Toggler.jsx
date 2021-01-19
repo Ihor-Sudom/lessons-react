@@ -5,27 +5,25 @@ class Toggler extends Component {
   constructor(props) {
     super(props),
     this.state = {
-      text: 'Off'
-    }
+      buttonOn: false
+    };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  changeText = (e) => {
-    e.target.textContent === 'Off'
-      ? this.setState({
-        text: this.state.text = 'On',
-      })
-      : this.setState({
-        text: this.state.text = 'Off',
-      })
+  handleClick() {
+    this.setState(state => ({
+      buttonOn: !state.buttonOn
+    }));
   }
 
   render() {
     return (
         <button 
           className="toggler"
-          onClick={this.changeText}
+          onClick={this.handleClick}
         >
-          {this.state.text}
+          {this.state.buttonOn ? 'On' : 'Off'}
         </button>
     );
   };
