@@ -12,7 +12,7 @@ class Counter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter: moment(getTimeWithOffset(props.offset)).format('LTS'),
+      counter: '',
     }
 
     // Do Not do this way
