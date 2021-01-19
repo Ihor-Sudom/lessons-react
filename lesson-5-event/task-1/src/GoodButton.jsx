@@ -3,7 +3,7 @@ import React from 'react';
 const GoodButton = () => (
     <button 
     className="fancy-button"
-    onClick={() => alert('Good jod!')}>
+    onClick={() => alert('Good job!')}>
     Click me!
   </button>
 );
