@@ -2,19 +2,13 @@ import React, { Component } from 'react';
 import Online from './Online.jsx';
 import Offline from './Offline.jsx';
 
-const Status = props => {
-  return (
-    props.isOnline ? <Online /> : <Offline />
-  )
-}
-/* class Status extends Component {
+class Status extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOnline: navigator.onLine
+      isOnline: props.isOnline
     }
   }
-
 
   render() {
     return (
@@ -23,6 +17,6 @@ const Status = props => {
       </>
     )
   };
-} */
+}
 
 export default Status;
