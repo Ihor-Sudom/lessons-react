@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import Online from './Online.jsx';
 import Offline from './Offline.jsx';
 
-class Status extends Component {
+const Status = props => {
+  return (
+    props.isOnline ? <Online /> : <Offline />
+  )
+}
+/* class Status extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +23,6 @@ class Status extends Component {
       </>
     )
   };
-}
+} */
 
 export default Status;
