@@ -9,12 +9,16 @@ class Auth extends Component {
     super(props);
     this.state = {
       isLoggedIn: true,
+      showSpinner: false,
     }
   }
 
   handleLogin = () => {
+    this.setState({
+      showSpinner: true,
+    });
     setTimeout(() => {
-      this.setState({isLoggedIn: false});
+      this.setState({isLoggedIn: false, showSpinner: false});
     }, 2000);
   }
 
@@ -35,7 +39,7 @@ class Auth extends Component {
 
     return (
       <>
-        {button}
+        {this.state.showSpinner ? <Spinner size={50}/> : button}
       </>
     )
   }
