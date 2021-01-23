@@ -11,7 +11,7 @@ const Pagination = (props) => {
     isPrevPageAvailable = false;
   };
 
-  if (currentPage == Math.ceil(totalItems / 3)) {
+  if (currentPage == Math.ceil(totalItems / itemsPerPage)) {
     isNextPageAvailable = true;
   } else {
     isNextPageAvailable = false;
