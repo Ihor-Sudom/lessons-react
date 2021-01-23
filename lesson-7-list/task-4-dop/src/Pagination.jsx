@@ -1,7 +1,6 @@
 import React from 'react';
 
-const Pagination = (props) => {
-  let {goPrev, goNext, currentPage, totalItems, itemsPerPage} = props;
+const Pagination = ({goPrev, goNext, currentPage, totalItems, itemsPerPage}) => {
   let isPrevPageAvailable;
   let isNextPageAvailable;
 
