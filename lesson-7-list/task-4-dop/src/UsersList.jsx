@@ -6,25 +6,28 @@ class UsersList extends React.Component {
   constructor(props) {
     super(props),
     this.state = {
+      limit: 3,
       page: 1,
       startIndex: 0,
-      endIndex: 3,
+      endIndex: 0,
     }
   }
 
   handleGoNext = () => {
     this.setState({
       page: this.state.page + 1,
-      startIndex: this.state.startIndex + 3,
-      endIndex: this.state.endIndex + 3,
+      startIndex: this.state.startIndex + this.state.limit,
+      endIndex: this.state.endIndex 
+        ? this.state.endIndex + this.state.limit
+        : this.state.limit * 2,
     })
   }
 
   handleGoPrevios = () => {
     this.setState({
       page: this.state.page - 1,
-      startIndex: this.state.startIndex - 3,
-      endIndex: this.state.endIndex - 3,
+      startIndex: this.state.startIndex - this.state.limit,
+      endIndex: this.state.endIndex - this.state.limit,
     })
   }
 
@@ -37,10 +40,10 @@ class UsersList extends React.Component {
               goNext={this.handleGoNext}
               currentPage={this.state.page}
               totalItems={this.props.users.length}
-              itemsPerPage={3} />
+              itemsPerPage={this.state.limit} />
             <ul className="users">
               {this.props.users
-                .slice(this.state.startIndex, this.state.endIndex)
+                .slice(this.state.startIndex, this.state.endIndex || this.state.limit)
                 .map(user => (<User key={user.id} {...user} />))
               }
             </ul>
