@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Life from './Life.jsx';
+import Demo from './Demo.jsx';
 
 const rootElement = document.querySelector('#root');
 
 
-ReactDOM.render(<Life number={Math.ceil(Math.random() * 100)} />, rootElement);
+ReactDOM.render(<Demo />, rootElement);
