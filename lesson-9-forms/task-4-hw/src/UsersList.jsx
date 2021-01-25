@@ -17,7 +17,7 @@ class UsersList extends Component {
     let userList = this.state.value == ''
       ? this.props.users
       : this.props.users
-        .filter(user => user.name.toUpperCase() == this.state.value.toUpperCase());
+        .filter(user => user.name.toUpperCase() === this.state.value.toUpperCase());
 
     return (
       <div>
@@ -27,7 +27,7 @@ class UsersList extends Component {
           onChange={this.handleChange}
         />
         <ul className="users">
-            {userList.map(user => (<User key={user.id} name={user.name} age={user.age} />))}
+            {userList.map(user => (<User key={user.id} {...user} />))}
         </ul>
       </div>
     )
