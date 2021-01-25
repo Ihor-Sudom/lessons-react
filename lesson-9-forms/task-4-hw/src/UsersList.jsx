@@ -27,7 +27,7 @@ class UsersList extends Component {
           onChange={this.handleChange}
         />
         <ul className="users">
-            {userList.map(user => (<User key={user.id} {...user} />))}
+            {userList.map(user => (<User key={user.id} name={user.name} age={user.age} />))}
         </ul>
       </div>
     )
