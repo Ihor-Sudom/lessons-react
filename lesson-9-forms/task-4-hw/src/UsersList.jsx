@@ -15,8 +15,8 @@ class UsersList extends Component {
 
   render() {
     let userList = this.state.value == ''
-      ? userList = this.props.users
-      : userList = this.props.users
+      ? this.props.users
+      : this.props.users
         .filter(user => user.name.toUpperCase() == this.state.value.toUpperCase());
 
     return (
