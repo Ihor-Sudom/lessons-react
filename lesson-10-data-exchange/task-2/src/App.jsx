@@ -5,8 +5,8 @@ import Profile from './Profile.jsx';
 class Page extends Component {
   state = {
     userData: {
-      firstName: '',
-      lastName: ''
+      firstName: 'John',
+      lastName: 'Doe'
     }
   }
 
