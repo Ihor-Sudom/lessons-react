@@ -14,8 +14,8 @@ class UsersList extends Component {
   }
 
   render() {
-    let userList = this.props.users.some(element => element.name.toLowerCase() == this.state.value.toLocaleLowerCase())
-      ? this.props.users.filter(user => user.name.toLowerCase() == this.state.value.toLowerCase())
+    let userList = this.props.value != ''
+      ? this.props.users.filter(user => user.name.toLowerCase().includes(this.state.value))
       : this.props.users;
 
     return (
@@ -26,7 +26,7 @@ class UsersList extends Component {
           onChange={this.handleChange}
         />
         <ul className="users">
-          {userList.map(user => (<User key={user.id} name={user.name} age={user.age} />))}
+          {userList.map(user => (<User key={user.id} {...user} />))}
         </ul>
       </div>
     )
