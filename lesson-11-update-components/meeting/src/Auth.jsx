@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Login from './Login';
-import Logout from "./Logout";
+import Logout from './Logout';
 import Spinner from './Spinner';
 
 // algo
@@ -30,7 +30,7 @@ class Auth extends Component {
 
   logoutHandler = () => {
     this.setState({
-      inLoggedIn: false,
+      isLoggedIn: false,
     })
   }
 
