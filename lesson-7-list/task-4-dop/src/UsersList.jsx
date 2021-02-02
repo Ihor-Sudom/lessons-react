@@ -13,20 +13,20 @@ class UsersList extends React.Component {
 
   goPrev = () => {
     this.state({
-      currentPage: this.state.currentPage + 1
+      currentPage: this.state.currentPage - 1
     })
   }
 
   goNext = () => {
     this.state({
-      currentPage: this.state.currentPage - 1
+      currentPage: this.state.currentPage + 1
     })
   }
 
     render() {
-      const { users } = this.props
+      const { users } = this.props;
       const { currentPage, usersPerPage } = this.state;
-      
+
       const start = (currentPage - 1) * usersPerPage;
       const usersToDiplay = users.slice(start, start + usersPerPage)
 
