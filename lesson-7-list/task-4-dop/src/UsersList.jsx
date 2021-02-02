@@ -6,46 +6,40 @@ class UsersList extends React.Component {
   constructor(props) {
     super(props),
     this.state = {
-      limitElement: 3,
-      page: 1,
-      startIndex: 0,
-      endIndex: 0,
+      currentPage: 1,
+      usersPerPage: 3,
     }
   }
 
-  handleGoNext = () => {
-    this.setState({
-      page: this.state.page + 1,
-      startIndex: this.state.startIndex + this.state.limitElement,
-      endIndex: this.state.endIndex 
-        ? this.state.endIndex + this.state.limitElement
-        : this.state.limitElement * 2,
+  goPrev = () => {
+    this.state({
+      currentPage: this.state.currentPage + 1
     })
   }
 
-  handleGoPrevios = () => {
-    this.setState({
-      page: this.state.page - 1,
-      startIndex: this.state.startIndex - this.state.limitElement,
-      endIndex: this.state.endIndex - this.state.limitElement,
+  goNext = () => {
+    this.state({
+      currentPage: this.state.currentPage - 1
     })
   }
 
     render() {
+      const { users } = this.props
+      const { currentPage, usersPerPage } = this.state;
+      
+      const start = (currentPage - 1) * usersPerPage;
+      const usersToDiplay = users.slice(start, start + usersPerPage)
 
         return (
           <div>
             <Pagination 
-              goPrev={this.handleGoPrevios} 
-              goNext={this.handleGoNext}
-              currentPage={this.state.page}
-              totalItems={this.props.users.length}
-              itemsPerPage={this.state.limitElement} />
+              goPrev={this.goPrev} 
+              goNext={this.goNext}
+              currentPage={currentPage}
+              totalItems={users.length}
+              itemsPerPage={usersPerPage} />
             <ul className="users">
-              {this.props.users
-                .slice(this.state.startIndex, this.state.endIndex || this.state.limitElement)
-                .map(user => (<User key={user.id} {...user} />))
-              }
+              {usersToDiplay.map(user => (<User key={user.id} {...user} />))}
             </ul>
           </div>
         );
