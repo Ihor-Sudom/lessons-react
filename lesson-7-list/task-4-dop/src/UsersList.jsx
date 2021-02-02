@@ -12,13 +12,13 @@ class UsersList extends React.Component {
   }
 
   goPrev = () => {
-    this.state({
+    this.setState({
       currentPage: this.state.currentPage - 1
     })
   }
 
   goNext = () => {
-    this.state({
+    this.setState({
       currentPage: this.state.currentPage + 1
     })
   }
