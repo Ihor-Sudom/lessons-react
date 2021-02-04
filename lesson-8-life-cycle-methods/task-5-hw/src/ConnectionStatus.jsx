@@ -6,13 +6,13 @@ class ConnectionStatus extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('online', this.onLine);
-    window.addEventListener('offline', this.offLine);
+    window.addEventListener('online', this.handleOnLine);
+    window.addEventListener('offline', this.handleOffLine);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('online', this.onLine);
-    window.removeEventListener('offline', this.offLine);
+    window.removeEventListener('online', this.handleOnLine);
+    window.removeEventListener('offline', this.handleOffLine);
   }
 
   handleOnLine = () => {
