@@ -11,18 +11,18 @@ class User extends Component {
   }
 
   componentDidMount() {
-    this.getUserData(this.props.match.params.user_id);
+    this.getUserData(this.props.match.params.userId);
   }
 
   componentDidUpdate(prevProps) {
-    const curUserId = this.props.match.params.user_id;
-    if (prevProps.match.params.user_id != curUserId) {
+    const curUserId = this.props.match.params.userId;
+    if (prevProps.match.params.userId != curUserId) {
       this.getUserData(curUserId);
     }
   }
 
-  getUserData = user_id => 
-    fetch(`https://api.github.com/users/${user_id}`)
+  getUserData = userId => {
+    fetch(`https://api.github.com/users/${userId}`)
     .then(response => response.json())
     .then(data => {
       const { avatar_url, name, location} = data;
@@ -32,6 +32,7 @@ class User extends Component {
         location,
       });
     })
+  }
 
 
   render() {

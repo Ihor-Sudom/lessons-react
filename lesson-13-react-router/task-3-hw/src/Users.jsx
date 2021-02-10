@@ -1,9 +1,10 @@
 import React from "react";
-import { Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import User from './User';
 
 const Users = ({ match }) => {
   return (
+    <Router>
     <div className="page__content">
       <h1>Users</h1>
       <ul className="navigation">
@@ -15,12 +16,13 @@ const Users = ({ match }) => {
         </li>
       </ul>
         <Switch>
+          <Route path={`${match.path}/:userId`} component={User} />
           <Route path={match.path}>
             <span>Select a user please</span>
           </Route>
-          <Route path={`${match.path}/:user_id`} component={User} />
         </Switch>
     </div>
+    </Router>
   );
 };
 
