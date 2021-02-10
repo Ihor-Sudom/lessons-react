@@ -4,32 +4,48 @@ class User extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: '',
+      avatar: null,
+      name: null,
+      location: null,
     }
   }
 
   componentDidMount() {
-    this.fetchUser(this.props.match.params.user_id);
+    this.getUserData(this.props.match.params.user_id);
   }
 
-  fetchUser = user_id => {
+  componentDidUpdate(prevProps) {
+    const curUserId = this.props.match.params.user_id;
+    if (prevProps.match.params.user_id != curUserId) {
+      this.getUserData(curUserId);
+    }
+  }
+
+  getUserData = user_id => 
     fetch(`https://api.github.com/users/${user_id}`)
     .then(response => response.json())
     .then(data => {
+      const { avatar_url, name, location} = data;
       this.setState({
-        user: data,
+        avatar: avatar_url,
+        name,
+        location,
       });
-    });
-  }
+    })
+
 
   render() {
-    const { avatar_url, name, location } = this.state.user;
+    const { avatar, name, location } = this.state;
+
+    if (!avatar || !name || !location) {
+      return null;
+    }
 
     return (
       <div className="user">
         <img 
           alt="User Avatar" 
-          src={avatar_url}
+          src={avatar}
           className="user__avatar" 
         />
         <div className="user__info">

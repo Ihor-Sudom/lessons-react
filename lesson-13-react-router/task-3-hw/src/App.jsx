@@ -1,12 +1,12 @@
 import React from "react";
-import { BrowserRouter, Link, Route } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import Users from './Users';
 
 const App = () => {
   return (
-    <div className="page">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="page">
         <ul className="navigation">
          <li className="navigation__item">
             <Link to="/">Home</Link>
@@ -15,12 +15,15 @@ const App = () => {
             <Link to="/users">Users</Link>
           </li>
         </ul>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/users" component={Users} />
-      </BrowserRouter>
-    </div>
+
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/users" component={Users} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   )
 };
 

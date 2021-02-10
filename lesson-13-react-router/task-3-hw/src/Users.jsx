@@ -8,17 +8,17 @@ const Users = ({ match }) => {
       <h1>Users</h1>
       <ul className="navigation">
         <li className="navigation__item">
-          <Link to={`${match.url}/github`}>Github</Link>
+          <Link to={`${match.path}/github`}>Github</Link>
         </li>
         <li className="navigation__item">
-          <Link to={`${match.url}/facebook`}>Facebook</Link>
+          <Link to={`${match.path}/facebook`}>Facebook</Link>
         </li>
       </ul>
-      <Switch>
-          <Route exact path={match.url}>
+        <Switch>
+          <Route path={match.path}>
             <span>Select a user please</span>
           </Route>
-          <Route path={`${match.url}/:user_id`} component={User} />
+          <Route path={`${match.path}/:user_id`} component={User} />
         </Switch>
     </div>
   );
